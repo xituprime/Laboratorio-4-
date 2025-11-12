@@ -1,5 +1,7 @@
 package model;
 
-public class Publicable {
-    
+
+public interface Publicable {
+    void publicar();
+    void visualizar();
 }
