@@ -1,6 +1,6 @@
 package model;
 
-public class Contenido {
+public class Contenido implements Publicable {
     protected int id;
     protected String titulo;
     protected String categoria;
@@ -31,12 +31,10 @@ public class Contenido {
         return autor;
     }
 
-    public void publicar(){
-        System.out.println("El contenido '" + titulo + "' ha sido publicado.");
-    }
+    @Override
+    public abstract void publicar();
 
-    public void visualizar(){
-        System.out.println("Visualizando el contenido: " + titulo);
-    }
+    @Override
+    public abstract void visualizar();
 
 }
