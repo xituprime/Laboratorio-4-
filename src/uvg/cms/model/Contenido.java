@@ -13,11 +13,15 @@ public abstract class Contenido implements Publicable {
         this.titulo = titulo;
         this.categoria = categoria;
         this.autor = autor;
-        this.filePath = filePath;
+        this.filePath = null;
     }
 
-    public Contenido(int id2, String titulo2, String categoria2, String autor2, String string) {
-        
+    public Contenido(int id, String titulo, String categoria, String autor, String filePath) {
+        this.id = id;
+        this.titulo = titulo;
+        this.categoria = categoria;
+        this.autor = autor;
+        this.filePath = filePath;
     }
 
     //getters y setters
@@ -37,10 +41,14 @@ public abstract class Contenido implements Publicable {
         return autor;
     }
 
-    @Override
-    public abstract void publicar();
+    public String getFilePath() {
+        return filePath;
+    }
 
     @Override
-    public abstract void visualizar();
+    public abstract String publicar();
+
+    @Override
+    public abstract String visualizar();
 
 }
