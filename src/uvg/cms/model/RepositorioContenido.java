@@ -1,5 +1,8 @@
 package model;
+
 import java.util.ArrayList;
+import java.util.List;
+import java.io.File;
 
 public class RepositorioContenido {
    private ArrayList<Contenido> listaContenidos;
@@ -8,15 +11,30 @@ public class RepositorioContenido {
        listaContenidos = new ArrayList<>();
    }
 
-    //nuevo contenido a ka lista
+    //nuevo contenido a la lista
    public void agregarContenido(Contenido contenido){
         listaContenidos.add(contenido);
    }
 
     //eliminar contenido por id 
    public void eliminarContenido(int id){
-        if (id >=  && id < listaContenidos.size()) {
+        if (id >= 0 && id < listaContenidos.size()) {
+            Contenido contenido = listaContenidos.get(id);
+            String rutaArchivo = contenido.getFilePath();
+
+            File archivo = new File(rutaArchivo);
+            if (archivo.exists()) {
+                if (archivo.delete()) {
+                    System.out.println("Archivo eliminado: " + archivo.getName());
+                } else {
+                    System.out.println("No se pudo eliminar el archivo: " + archivo.getName());
+                }
+            } else {
+                System.out.println("El archivo no existe: " + rutaArchivo);
+            }
+
             listaContenidos.remove(id);
+            System.out.println("Contenido con ID " + id + " y nombre " + archivo.getName() + " eliminado.");
         }else{
             System.out.println("ID no válido");
         }
