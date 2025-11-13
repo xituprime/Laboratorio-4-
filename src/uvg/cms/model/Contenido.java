@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Contenido {
+public abstract class Contenido implements Publicable {
     protected int id;
     protected String titulo;
     protected String categoria;
@@ -37,12 +37,10 @@ public abstract class Contenido {
         return autor;
     }
 
-    public String getFilePath() {
-        return filePath;
-    }
+    @Override
+    public abstract void publicar();
 
-    public abstract String publicar();
-
-    public abstract String visualizar();
+    @Override
+    public abstract void visualizar();
 
 }
