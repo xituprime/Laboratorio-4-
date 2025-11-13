@@ -1,1 +1,7 @@
 *.class
+
+# Ignora todos los archivos y subcarpetas dentro de la carpeta 'upload'
+/upload/*
+
+# Crea una excepción para el archivo .gitkeep, forzando a Git a rastrear la carpeta 'upload'
+!/upload/.gitkeep

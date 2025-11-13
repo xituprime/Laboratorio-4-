@@ -7,12 +7,10 @@ import java.nio.file.StandardCopyOption;
 import java.awt.Desktop;
 
 public class Imagen extends Contenido {
-    private static String rutaArchivo;
 
     public Imagen(int id, String titulo, String categoria, String autor, String rutaArchivo) throws IOException {
         // Constructor
         super(id, titulo, categoria, autor, "uploads/" + new File(rutaArchivo).getName());
-        this.rutaArchivo = rutaArchivo;
 
         if (!esTipoValido(rutaArchivo)) {
             throw new IOException("Tipo de archivo no válido. Solo se permiten .jpg, .jpeg, .png");

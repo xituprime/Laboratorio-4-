@@ -18,4 +18,8 @@ public class Articulo extends Contenido{
     public void visualizar(){
         System.out.println("Mostrando contenido del artículo:\n" + texto);
     }
+
+    public String getTexto() {
+        return texto;
+    }
 }
