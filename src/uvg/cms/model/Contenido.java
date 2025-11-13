@@ -1,10 +1,11 @@
 package model;
 
-public class Contenido {
+public abstract class Contenido {
     protected int id;
     protected String titulo;
     protected String categoria;
     protected String autor;
+    protected String filePath;
 
     //constructor
     public Contenido(int id, String titulo, String categoria, String autor) {
@@ -12,6 +13,11 @@ public class Contenido {
         this.titulo = titulo;
         this.categoria = categoria;
         this.autor = autor;
+        this.filePath = filePath;
+    }
+
+    public Contenido(int id2, String titulo2, String categoria2, String autor2, String string) {
+        
     }
 
     //getters y setters
@@ -31,12 +37,12 @@ public class Contenido {
         return autor;
     }
 
-    public void publicar(){
-        System.out.println("El contenido '" + titulo + "' ha sido publicado.");
+    public String getFilePath() {
+        return filePath;
     }
 
-    public void visualizar(){
-        System.out.println("Visualizando el contenido: " + titulo);
-    }
+    public abstract String publicar();
+
+    public abstract String visualizar();
 
 }
