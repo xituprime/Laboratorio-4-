@@ -2,6 +2,6 @@ package model;
 
 
 public interface Publicable {
-    String publicar();
-    String visualizar();
+    void publicar();
+    void visualizar();
 }

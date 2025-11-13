@@ -44,22 +44,22 @@ public class Imagen extends Contenido {
     }
 
     @Override
-    public String publicar(){
-        return "La imagen " + getTitulo() + " por " + getAutor() + " ha sido publicada con éxito.";
+    public void publicar(){
+        System.out.println("La imagen " + getTitulo() + " por " + getAutor() + " ha sido publicada con éxito.");
     }
 
     @Override
-    public String visualizar() {
+    public void visualizar() {
         File archivo = new File(getFilePath());
         if (archivo.exists()) {
             try {
                 Desktop.getDesktop().open(archivo);
-                return "Visualizando imagen: " + archivo.getAbsolutePath();
+                System.out.println("Visualizando imagen: " + archivo.getAbsolutePath());
             } catch (IOException e) {
-                return "No se pudo abrir la imagen: " + e.getMessage();
+                System.err.println("No se pudo abrir la imagen: " + e.getMessage());
             }
         } else {
-            return "El archivo de imagen no existe: " + getFilePath();
+            System.err.println("El archivo de imagen no existe: " + getFilePath());
         }
     }
     

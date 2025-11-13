@@ -46,9 +46,9 @@ public abstract class Contenido implements Publicable {
     }
 
     @Override
-    public abstract String publicar();
+    public abstract void publicar();
 
     @Override
-    public abstract String visualizar();
+    public abstract void visualizar();
 
 }
