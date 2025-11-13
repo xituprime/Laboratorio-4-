@@ -22,15 +22,19 @@ public class RepositorioContenido {
             Contenido contenido = listaContenidos.get(id);
             String rutaArchivo = contenido.getFilePath();
 
-            File archivo = new File(rutaArchivo);
-            if (archivo.exists()) {
-                if (archivo.delete()) {
-                    System.out.println("Archivo eliminado: " + archivo.getName());
+            //comprobar que archivo existe
+            if (rutaArchivo != null && !rutaArchivo.isEmpty()) {
+                File archivo = new File(rutaArchivo);    
+            
+                if (archivo.exists()) {
+                    if (archivo.delete()) {
+                        System.out.println("Archivo eliminado: " + archivo.getName());
+                    } else {
+                        System.out.println("No se pudo eliminar el archivo: " + archivo.getName());
+                    }
                 } else {
-                    System.out.println("No se pudo eliminar el archivo: " + archivo.getName());
+                    System.out.println("El archivo no existe: " + rutaArchivo);
                 }
-            } else {
-                System.out.println("El archivo no existe: " + rutaArchivo);
             }
 
             listaContenidos.remove(id);
@@ -44,4 +48,30 @@ public class RepositorioContenido {
    public ArrayList<Contenido> obtenerTodos(){
        return listaContenidos;
    }
+
+   //buscar por titulo
+   public ArrayList<Contenido> buscarPorTitulo(String titulo){
+       ArrayList<Contenido> resultados = new ArrayList<>();
+
+       for(Contenido c : listaContenidos){
+           if(c.getTitulo().toLowerCase().contains(titulo.toLowerCase())){
+               resultados.add(c);
+           }
+       }
+       return resultados;
+   }
+
+   //buscarpor tipo
+    public ArrayList<Contenido> filtrarPorTipo(Class<?> tipo) {
+        ArrayList<Contenido> resultados = new ArrayList<>();
+
+        for (Contenido c : listaContenidos) {
+            if (c.getClass() == tipo) {
+                resultados.add(c);
+            }
+        }
+
+        return resultados;
+    }
+
 }
