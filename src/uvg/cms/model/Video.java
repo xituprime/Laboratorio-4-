@@ -2,7 +2,7 @@ package model;
 public class Video extends Contenido{
     private String url;
     private int duracion;
-
+    
     //constructor
     public Video(int id, String titulo, String categoria, String autor, String url, int duracion) {
         super(id, titulo, categoria, autor);
