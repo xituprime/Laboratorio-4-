@@ -6,6 +6,7 @@ public abstract class Contenido implements Publicable {
     protected String categoria;
     protected String autor;
     protected String filePath;
+    protected boolean publicado;
 
     //constructor
     public Contenido(int id, String titulo, String categoria, String autor) {
@@ -14,6 +15,7 @@ public abstract class Contenido implements Publicable {
         this.categoria = categoria;
         this.autor = autor;
         this.filePath = null;
+        this.publicado = false;
     }
 
     public Contenido(int id, String titulo, String categoria, String autor, String filePath) {
@@ -22,6 +24,7 @@ public abstract class Contenido implements Publicable {
         this.categoria = categoria;
         this.autor = autor;
         this.filePath = filePath;
+        this.publicado = false;
     }
 
     //getters y setters
@@ -43,6 +46,14 @@ public abstract class Contenido implements Publicable {
 
     public String getFilePath() {
         return filePath;
+    }
+
+    public boolean isPublicado() {
+        return publicado;
+    }
+
+    public void setPublicado(boolean publicado) {
+        this.publicado = publicado;
     }
 
     @Override

@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.io.File;
 
 public class RepositorioContenido {
@@ -18,30 +17,35 @@ public class RepositorioContenido {
 
     //eliminar contenido por id 
    public void eliminarContenido(int id){
-        if (id >= 0 && id < listaContenidos.size()) {
-            Contenido contenido = listaContenidos.get(id);
-            String rutaArchivo = contenido.getFilePath();
+        // Buscar por ID, no por índice
+        for (int i = 0; i < listaContenidos.size(); i++) {
+            if (listaContenidos.get(i).getId() == id) {
+                Contenido contenido = listaContenidos.get(i);
+                String rutaArchivo = contenido.getFilePath();
+                String nombreArchivo = "";
 
-            //comprobar que archivo existe
-            if (rutaArchivo != null && !rutaArchivo.isEmpty()) {
-                File archivo = new File(rutaArchivo);    
-            
-                if (archivo.exists()) {
-                    if (archivo.delete()) {
-                        System.out.println("Archivo eliminado: " + archivo.getName());
+                //comprobar que archivo existe
+                if (rutaArchivo != null && !rutaArchivo.isEmpty()) {
+                    File archivo = new File(rutaArchivo);    
+                    nombreArchivo = archivo.getName();
+                
+                    if (archivo.exists()) {
+                        if (archivo.delete()) {
+                            System.out.println("Archivo eliminado: " + archivo.getName());
+                        } else {
+                            System.out.println("No se pudo eliminar el archivo: " + archivo.getName());
+                        }
                     } else {
-                        System.out.println("No se pudo eliminar el archivo: " + archivo.getName());
+                        System.out.println("El archivo no existe: " + rutaArchivo);
                     }
-                } else {
-                    System.out.println("El archivo no existe: " + rutaArchivo);
                 }
-            }
 
-            listaContenidos.remove(id);
-            System.out.println("Contenido con ID " + id + " y nombre " + archivo.getName() + " eliminado.");
-        }else{
-            System.out.println("ID no válido");
+                listaContenidos.remove(i);
+                System.out.println("Contenido con ID " + id + " y nombre " + nombreArchivo + " eliminado.");
+                return;
+            }
         }
+        System.out.println("ID no válido");
    }
 
     //obtener todos los contenidos
