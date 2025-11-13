@@ -11,7 +11,7 @@ public class Articulo extends Contenido{
 
     @Override
     public void publicar(){
-        System.out.println("Artículo publicado: " + titulo + " por " + autor)
+        System.out.println("Artículo publicado: " + titulo + " por " + autor);
     }
 
     @Override
